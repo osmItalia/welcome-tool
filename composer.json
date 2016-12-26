@@ -1,0 +1,10 @@
+{
+    "name": "sabas/welcome-tool",
+    "require": {
+        "sabas/oauth1-openstreetmap": "dev-master",
+        "mikecao/flight": "^1.3",
+        "raveren/kint": "^1.0",
+        "illuminate/database": "^5.3"
+    },
+    "minimum-stability": "dev"
+}
