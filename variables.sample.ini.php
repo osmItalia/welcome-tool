@@ -1,3 +1,6 @@
+;<?php
+;die(); // For further security
+;/*
 [Database parameters]
 host = "localhost"
 database = "DBNAME"
@@ -10,3 +13,4 @@ secret = "SECRET_FROM_OSM"
 
 [Welcome tool]
 feed = "http://resultmaps.neis-one.org/newestosmcountryfeed.php?c=Italy"
+;*/
