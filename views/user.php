@@ -95,12 +95,12 @@
                 <?php if ($user->answered == 1) {?>
                     <div class="ui toggle checkbox checked answer">
                        <input type="checkbox" name="chkAnswer" checked="">
-                       <label>Answered</label>
+                       <label id="answerLabel">Answered</label>
                      </div>
                 <?php } else {?>
                     <div class="ui toggle checkbox answer">
                        <input type="checkbox" name="chkAnswer">
-                       <label>Not answered</label>
+                       <label id="answerLabel">Not answered</label>
                      </div>
                 <?php }?>
             </div>
@@ -123,10 +123,12 @@ $('.checkbox.welcome').checkbox().checkbox({
 $('.checkbox.answer').checkbox().checkbox({
     onChecked: function () {
         $.post('<?php echo Flight::request()->base?>/user/<?php echo $user->user_id ?>/answered', {'hasAnswered': 1}, function(response) {
+            $('#answerLabel').html('Answered');
         });
     },
     onUnchecked: function () {
         $.post('<?php echo Flight::request()->base?>/user/<?php echo $user->user_id ?>/answered', {'hasAnswered': 0}, function(response) {
+            $('#answerLabel').html('Not answered');
         });
     }
 });

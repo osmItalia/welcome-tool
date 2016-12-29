@@ -59,7 +59,7 @@ CREATE TABLE `notes` (
   `timestamp` bigint(20) NOT NULL,
   `author` varchar(200) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `note` varchar(500) NOT NULL
+  `note` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

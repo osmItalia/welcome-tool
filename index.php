@@ -355,7 +355,7 @@ Flight::route(
         $lang = Capsule::table('languages')
             ->get();
 
-        Flight::render('snippets/insert.php', [ 'snippets' => $snip, 'languages' => $lang  ], 'content');
+        Flight::render('snippets/insert.php', [ 'languages' => $lang  ], 'content');
         Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
     }
 );
