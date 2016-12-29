@@ -337,22 +337,37 @@ Flight::route(
         $snip = Capsule::table('snippets')
             ->orderBy('language')
             ->get();
-        $lang = Capsule::table('languages')
-            ->get();
 
-        Flight::render('snippets.php', [ 'snippets' => $snip, 'languages' => $lang ], 'content');
+        Flight::render('snippets.php', [ 'snippets' => $snip ], 'content');
         Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
     }
 );
 
+
+
 Flight::route(
-    'POST /admin/snippets',
+    'GET /admin/snippets/insert',
     function () {
         if (!isset($_SESSION['display_name'])) {
             Flight::redirect('/');
         }
 
-        $lang = Capsule::table('snippets')
+        $lang = Capsule::table('languages')
+            ->get();
+
+        Flight::render('snippets/insert.php', [ 'snippets' => $snip, 'languages' => $lang  ], 'content');
+        Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
+    }
+);
+
+Flight::route(
+    'POST /admin/snippets/insert',
+    function () {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $snip = Capsule::table('snippets')
             ->insert(['language' => $_POST['iso'], 'part' => $_POST['part'], 'text' => $_POST['text']]);
 
         Flight::redirect('/admin/snippets');
@@ -366,9 +381,42 @@ Flight::route(
             Flight::redirect('/');
         }
 
-        $lang = Capsule::table('snippets')
+        $snip = Capsule::table('snippets')
             ->where('id', $id)
             ->delete();
+
+        Flight::redirect('/admin/snippets');
+    }
+);
+
+Flight::route(
+    'GET /admin/snippets/modify/@id',
+    function ($id) {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $snip = Capsule::table('snippets')
+            ->where('id', $id)
+            ->first();
+        $lang = Capsule::table('languages')
+            ->get();
+
+        Flight::render('snippets/modify.php', [ 'snippets' => $snip, 'languages' => $lang  ], 'content');
+        Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
+    }
+);
+
+Flight::route(
+    'POST /admin/snippets/modify/@id',
+    function ($id) {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $snip = Capsule::table('snippets')
+            ->where('id', $id)
+            ->update(['language' => $_POST['iso'], 'part' => $_POST['part'], 'text' => $_POST['text']]);
 
         Flight::redirect('/admin/snippets');
     }
