@@ -57,7 +57,7 @@
         <div class="event">
           <div class="content">
             <div class="summary">
-                <button class="ui button">Create a welcome message</button>
+                <a class="ui button" href="<?php echo Flight::request()->base.'/welcome/'.$user->user_id?>">Create a welcome message</a>
             </div>
           </div>
         </div>

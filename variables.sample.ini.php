@@ -13,4 +13,5 @@ secret = "SECRET_FROM_OSM"
 
 [Welcome tool]
 feed = "http://resultmaps.neis-one.org/newestosmcountryfeed.php?c=Italy"
+mainLanguage = "it"
 ;*/

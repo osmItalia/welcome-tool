@@ -2,6 +2,7 @@
 require('vendor/autoload.php');
 
 $ini = parse_ini_file("variables.ini.php");
+Flight::set('ini', $ini);
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -31,7 +32,7 @@ session_start();
 Flight::route(
     '/login',
     function () {
-        global $ini;
+        $ini = Flight::get('ini');
         $server = new sabas\OAuth1\Client\Server\Openstreetmap(array(
             'identifier' => $ini['identifier'],
             'secret' => $ini['secret'],
@@ -220,6 +221,17 @@ Flight::route(
 /*
  * Welcome message creation
  */
+
+Flight::route(
+    'GET /snippets/@lang',
+    function ($lang) {
+        $snip = Capsule::table('snippets')
+            ->where('snippets.language', $lang)
+            ->get();
+        Flight::json($snip);
+    }
+);
+
 Flight::route(
     'GET /welcome/@id',
     function ($id) {
@@ -229,10 +241,116 @@ Flight::route(
         //TODO
         //pagina con textbox a sx, a dx bottoni che corrispondono alle parti di testo disponibili per ciascuna lingua
         //cliccando sul bottone viene appeso al testo nella textbox
+        $lang = Capsule::table('languages')
+            ->get();
 
-        Flight::render('note.php', [ 'id' => $id ], 'content');
+        Flight::render('welcome.php', [ 'id' => $id, 'languages' => $lang ], 'content');
         Flight::render('template.php', [ 'pTitle' => "Create welcome message for user ".$id ]);
     }
 );
 
+/*
+ * Administration
+ */
+
+Flight::route(
+    'GET /admin',
+    function () {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $content = '<ul><li><a href="<?php echo Flight::request()->base;?>/admin/languages">Languages</a></li>';
+        $content .= '<li><a href="<?php echo Flight::request()->base;?>/admin/snippets">Message snippets</a></li></ul>';
+        Flight::render('template.php', [ 'pTitle' => "Admin", 'content' => $content ]);
+    }
+);
+
+Flight::route(
+    'GET /admin/languages',
+    function () {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $lang = Capsule::table('languages')
+            ->get();
+
+        Flight::render('languages.php', [ 'languages' => $lang ], 'content');
+        Flight::render('template.php', [ 'pTitle' => "Languages admin" ]);
+    }
+);
+
+Flight::route(
+    'POST /admin/languages',
+    function () {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $lang = Capsule::table('languages')
+            ->insert(['iso' => $_POST['iso'], 'name' => $_POST['name']]);
+
+        Flight::redirect('/admin/languages');
+    }
+);
+
+Flight::route(
+    'GET /admin/languages/delete/@language',
+    function ($language) {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $lang = Capsule::table('languages')
+            ->where('iso', $language)
+            ->delete();
+
+        Flight::redirect('/admin/languages');
+    }
+);
+
+Flight::route(
+    'GET /admin/snippets',
+    function () {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+        $snip = Capsule::table('snippets')
+            ->orderBy('language')
+            ->get();
+
+        Flight::render('snippets.php', [ 'snippets' => $snip ], 'content');
+        Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
+    }
+);
+
+Flight::route(
+    'POST /admin/snippets',
+    function () {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $lang = Capsule::table('snippets')
+            ->insert(['language' => $_POST['iso'], 'part' => $_POST['part'], 'text' => $_POST['text']]);
+
+        Flight::redirect('/admin/snippets');
+    }
+);
+
+Flight::route(
+    'GET /admin/snippets/delete/@id',
+    function ($id) {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        $lang = Capsule::table('snippets')
+            ->where('id', $id)
+            ->delete();
+
+        Flight::redirect('/admin/snippets');
+    }
+);
 Flight::start();

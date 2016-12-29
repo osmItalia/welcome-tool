@@ -35,10 +35,20 @@
           Welcome tool
         </a>
         <a href="<?php echo Flight::request()->base;?>" class="item">Home</a>
+        <?php if (isset($_SESSION['display_name'])) :?>
+        <div class="ui simple dropdown item" tabindex="0">
+            Admin
+            <i class="dropdown icon"></i>
+            <div class="menu" tabindex="-1">
+              <a href="<?php echo Flight::request()->base;?>/admin/languages" class="item">Languages</a>
+              <a href="<?php echo Flight::request()->base;?>/admin/snippets" class="item">Message snippets</a>
+            </div>
+        </div>
+        <?php endif;?>
         <div class="right menu">
-          <?php if(!isset($_SESSION['display_name'])) :?>
+          <?php if (!isset($_SESSION['display_name'])) :?>
           <a class="item" href="<?php echo Flight::request()->base;?>/login">Login</a>
-          <?php else:?>
+          <?php else :?>
           <div class="item">
               <img class="avatar" src="<?php echo $_SESSION['user_picture']; ?>">&nbsp;
               <?php echo $_SESSION['display_name']; ?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Dic 26, 2016 alle 20:30
+-- Creato il: Dic 29, 2016 alle 22:30
 -- Versione del server: 5.7.16-0ubuntu0.16.04.1
 -- Versione PHP: 7.0.8-0ubuntu0.16.04.3
 
@@ -23,14 +23,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `messages`
+-- Struttura della tabella `languages`
 --
 
-CREATE TABLE `messages` (
-  `id` int(11) NOT NULL,
-  `language` varchar(15) NOT NULL,
-  `part` varchar(15) NOT NULL,
-  `text` varchar(1000) NOT NULL
+CREATE TABLE `languages` (
+  `iso` varchar(3) NOT NULL,
+  `name` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -67,6 +65,19 @@ CREATE TABLE `notes` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `snippets`
+--
+
+CREATE TABLE `snippets` (
+  `id` int(11) NOT NULL,
+  `language` varchar(15) NOT NULL,
+  `part` varchar(15) NOT NULL,
+  `text` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `welcome_user`
 --
 
@@ -83,10 +94,10 @@ CREATE TABLE `welcome_user` (
 --
 
 --
--- Indici per le tabelle `messages`
+-- Indici per le tabelle `languages`
 --
-ALTER TABLE `messages`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `languages`
+  ADD PRIMARY KEY (`iso`);
 
 --
 -- Indici per le tabelle `new_user`
@@ -101,6 +112,12 @@ ALTER TABLE `notes`
   ADD PRIMARY KEY (`nid`);
 
 --
+-- Indici per le tabelle `snippets`
+--
+ALTER TABLE `snippets`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `welcome_user`
 --
 ALTER TABLE `welcome_user`
@@ -111,15 +128,15 @@ ALTER TABLE `welcome_user`
 --
 
 --
--- AUTO_INCREMENT per la tabella `messages`
---
-ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT per la tabella `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `nid` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `nid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
+-- AUTO_INCREMENT per la tabella `snippets`
+--
+ALTER TABLE `snippets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
