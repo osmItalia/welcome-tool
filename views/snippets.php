@@ -2,7 +2,12 @@
 <form action="<?php Flight::request()->base.Flight::request()->url?>" method="post" class="ui form">
     <div class="field">
       <label>Language</label>
-      <input type="text" name="iso" placeholder="it">
+      <select class="ui dropdown"  name="iso">
+        <?php
+        foreach ($languages as $lang) : ?>
+        <option value="<?php echo $lang->iso;?>"><?php echo $lang->name;?></option>
+        <?php endforeach; ?>
+      </select>
     </div>
     <div class="field">
       <label>Part</label>

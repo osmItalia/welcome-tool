@@ -148,7 +148,7 @@ $('.checkbox.answer').checkbox().checkbox({
             $icon = "comments outline";
             break;
         case 'welcome':
-            $icon = "home";
+            $icon = "quote left";
             break;
     }
     ?>

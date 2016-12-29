@@ -11,15 +11,15 @@
 
 <div class="ui grid">
   <div class="eight wide column">
-      <div class="ui form">
+      <form action="<?php Flight::request()->base.Flight::request()->url?>" method="post" class="ui form">
         <div class="field">
           <label>Text</label>
-          <textarea rows="12" id="message"></textarea>
+          <textarea rows="12" id="message" name="message"></textarea>
         </div>
-        <!--button class="ui primary button" type="submit">
-          Send
-      </button-->
-      </div>
+        <button class="ui primary button" type="submit">
+          I sent this message
+      </button>
+      </form>
   </div>
   <div class="eight wide column">
       <select class="ui dropdown">

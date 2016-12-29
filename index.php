@@ -238,14 +238,32 @@ Flight::route(
         if (!isset($_SESSION['display_name'])) {
             Flight::redirect('/');
         }
-        //TODO
-        //pagina con textbox a sx, a dx bottoni che corrispondono alle parti di testo disponibili per ciascuna lingua
-        //cliccando sul bottone viene appeso al testo nella textbox
+
         $lang = Capsule::table('languages')
             ->get();
 
         Flight::render('welcome.php', [ 'id' => $id, 'languages' => $lang ], 'content');
         Flight::render('template.php', [ 'pTitle' => "Create welcome message for user ".$id ]);
+    }
+);
+
+Flight::route(
+    'POST /welcome/@id',
+    function ($id) {
+        if (!isset($_SESSION['display_name'])) {
+            Flight::redirect('/');
+        }
+
+        Capsule::table('notes')->insert(
+            [
+                'uid' => $id,
+                'timestamp' => time(),
+                'author' => $_SESSION['display_name'],
+                'type' => 'welcome',
+                'note' => $_POST['message']
+            ]
+        );
+        Flight::redirect('/user/'.$id);
     }
 );
 
@@ -319,8 +337,10 @@ Flight::route(
         $snip = Capsule::table('snippets')
             ->orderBy('language')
             ->get();
+        $lang = Capsule::table('languages')
+            ->get();
 
-        Flight::render('snippets.php', [ 'snippets' => $snip ], 'content');
+        Flight::render('snippets.php', [ 'snippets' => $snip, 'languages' => $lang ], 'content');
         Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
     }
 );
