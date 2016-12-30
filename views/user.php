@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.5.5/showdown.min.js"></script>
+
 <?php
     $date = new DateTime();
 ?>
@@ -161,9 +163,32 @@ $('.checkbox.answer').checkbox().checkbox({
         <?php echo $date->setTimestamp($note->timestamp)->format('d/m/Y H:i'). " - ". $note->author;?>
       </div>
       <div class="summary">
-        <?php echo $note->note;?>
+        <?php
+        if ($note->type != "welcome") {
+            echo $note->note;
+        } else {
+            echo "<span id='note".$note->timestamp."'>".$note->note."</span> (<a href='#' onclick='preview(\"note".$note->timestamp."\")'>Preview</a>)";
+        }?>
       </div>
     </div>
   </div>
 <?php endforeach;?>
 </div>
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Message preview
+  </div>
+  <div class="content" id="modalPreview">
+  </div>
+</div>
+<script>
+function preview(id) {
+    var converter = new showdown.Converter(),
+        iid       = '#'+id,
+        text      = $(iid).text(),
+        html      = converter.makeHtml(text);
+    $('#modalPreview').html(html);
+    $('.ui.modal').modal('show');
+}
+</script>
