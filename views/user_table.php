@@ -33,12 +33,17 @@
 <?php endforeach; ?>
 </tbody>
 <tfoot>
+<?php
+$date = DateTime::createFromFormat('Ymd', $day);
+$previous = $date->sub(new DateInterval('P1D'))->format('Ymd');
+$next = $date->add(new DateInterval('P2D'))->format('Ymd');
+?>
 <tr><th colspan="6">
   <div class="ui right floated pagination menu">
-    <a class="icon item" href="<?php echo Flight::request()->base.'/day/'.($day-1)?>">
+    <a class="icon item" href="<?php echo Flight::request()->base.'/day/'.($previous)?>">
       <i class="left chevron icon"></i>
     </a>
-    <a class="icon item" href="<?php echo Flight::request()->base.'/day/'.($day+1)?>">
+    <a class="icon item" href="<?php echo Flight::request()->base.'/day/'.($next)?>">
       <i class="right chevron icon"></i>
     </a>
   </div>

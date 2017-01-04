@@ -33,7 +33,7 @@
     <div class="ui fixed inverted menu">
       <div class="ui container">
         <a href="<?php echo Flight::request()->base;?>" class="header item">
-          <img class="logo" src="https://placehold.it/50x50">&nbsp;
+          <img class="logo" src="<?php echo Flight::request()->base;?>/welcome.png">&nbsp;
           Welcome tool
         </a>
         <a href="<?php echo Flight::request()->base;?>" class="item">Home</a>
