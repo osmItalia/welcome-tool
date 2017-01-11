@@ -7,6 +7,7 @@
     <th>Welcomed by</th>
     <th>Answered?</th>
     <th>Last note</th>
+    <th>First Editor</th>
 </tr>
 </thead>
 <tbody>
@@ -29,6 +30,7 @@
     ?>
     <td><i class="large <?php echo $answered;?> icon"></i></td>
     <td><?php echo $row->note;?></td>
+    <td><?php echo $row->first_changeset_editor;?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>
