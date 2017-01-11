@@ -27,6 +27,10 @@
 .logo, .avatar {
 
 }
+
+.ui.main.text.container.Site-content {
+max-width: 1200px !important;
+}
   </style>
 </head>
 <body class="Site">
