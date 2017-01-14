@@ -7,6 +7,10 @@
 .ui.divided.items>.snippet.item:hover {
     background-color: #efe;
 }
+
+.hidden_description {
+    display: none;
+}
 </style>
 
 <div class="ui grid">
@@ -14,7 +18,7 @@
       <form action="<?php Flight::request()->base.Flight::request()->url?>" method="post" class="ui form">
         <div class="field">
           <label>Text (<a href="#" onclick="preview()">Preview</a>)</label>
-          <textarea rows="12" id="message" name="message"></textarea>
+          <textarea rows="12" id="message" name="message" ondragover="event.preventDefault()" ondrop="drop()"></textarea>
         </div>
         <button class="ui primary button" type="submit">
           I sent this message
@@ -55,9 +59,10 @@ function preview() {
 function appendSnippets(response) {
     $('#snippetList').empty();
     $.each(response, function (k, v) {
-        var htmlString = '<div class="snippet item" ondblclick="appendThis(this)"><div class="label"><i class="recycle icon"></i></div><div class="content">';
+        var htmlString = '<div class="snippet item" draggable="true" ondragstart="dragStart(this)" ondblclick="appendThis(this)"><div class="label"><i class="recycle icon"></i></div><div class="content">';
         htmlString += '<a class="header">'+v['part']+'</a>';
         htmlString += '<div class="description">'+v['text']+'</div>';
+        htmlString += '<div class="hidden_description">'+v['hidden_text']+'</div>';
         htmlString += '</div></div>';
         $('#snippetList').append(htmlString);
     });
@@ -73,7 +78,16 @@ $('.ui.dropdown')
 $.getJSON('<?php echo Flight::request()->base?>/snippets/<?php echo $mLang;?>', { }, appendSnippets);
 
 function appendThis(obj) {
-    var txt = $(obj).find('div.description')[0].innerHTML;
+    var txt = $(obj).find('div.hidden_description')[0].innerHTML;
     $('#message').val($('#message').val()+txt+"\n");
 };
+
+function dragStart(obj) {
+    var txt = $(obj).find('div.hidden_description')[0].innerHTML;
+    event.dataTransfer.setData('text/plain', txt);
+}
+
+function drop() {
+    $('#message').val($('#message').val()+event.dataTransfer.getData("text/plain")+"\n");
+}
 </script>

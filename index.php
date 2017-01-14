@@ -227,13 +227,14 @@ Flight::route(
     function ($lang) {
         $snip = Capsule::table('snippets')
             ->where('snippets.language', $lang)
+            ->select('part', Capsule::raw('`text` AS hidden_text'), Capsule::raw('CONCAT(LEFT(`text`, 150), CASE WHEN LENGTH (`text`) > 150 THEN "..." ELSE "" END) AS text'))
             ->get();
         Flight::json($snip);
     }
 );
 
 Flight::route(
-    'GET /welcome/@id',
+    'GET /welcome/@id:[0-9]+',
     function ($id) {
         if (!isset($_SESSION['display_name'])) {
             Flight::redirect('/');
