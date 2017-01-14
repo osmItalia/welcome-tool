@@ -29,6 +29,15 @@
           </div>
         </div>
       </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+             First edit location: <?php
+                echo $user->first_edit_location;
+                ?>
+          </div>
+        </div>
+      </div>
     </div>
     <h4 class="ui sub header">Current data</h4>
     <div class="ui small feed">
