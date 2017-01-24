@@ -41,6 +41,7 @@ max-width: 1200px !important;
           Welcome tool
         </a>
         <a href="<?php echo Flight::get('base');?>/" class="item">Home</a>
+        <a href="<?php echo Flight::get('base');?>/list" class="item">List mode</a>
         <?php if (isset($_SESSION['display_name'])) :?>
         <div class="ui simple dropdown item" tabindex="0">
             Admin

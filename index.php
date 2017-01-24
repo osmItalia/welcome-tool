@@ -94,12 +94,12 @@ Flight::route(
                             (SELECT uid, MAX(timestamp) AS timestamp FROM notes GROUP BY uid) maxnotes
                         "), 'maxnotes.uid', '=', 'new_user.user_id')
             ->leftJoin('notes', 'maxnotes.timestamp', '=', 'notes.timestamp')
-            ->where('registration_date', '>', strtotime('today midnight'))
+            ->where('registration_date', '>', strtotime('yesterday midnight'))
             ->where('registration_date', '<', strtotime('tomorrow midnight'))
             ->get();
 
         Flight::render('user_table.php', [ 'results' => $users, 'day' => date('Ymd')], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Users who registered today" ]);
+        Flight::render('template.php', [ 'pTitle' => "Users who registered during the past day" ]);
     }
 );
 
@@ -128,6 +128,33 @@ Flight::route(
         Flight::render('template.php', [ 'pTitle' => "Users who registered on ".$day ]);
     }
 );
+
+Flight::route(
+    '/list(/@page)',
+    function ($page) {
+        /* pagination */
+        if ($page === null || $page < 1) {
+            $page = 1;
+        } // 0 shows first 15, but it is page = 1
+        $page--;
+        $take = 10;
+        $skip = $take * $page;
+
+        $users = Capsule::table('new_user')
+            ->leftJoin('welcome_user', 'new_user.user_id', '=', 'welcome_user.uid')
+            ->leftJoin(Capsule::raw("
+                            (SELECT uid, MAX(timestamp) AS timestamp FROM notes GROUP BY uid) maxnotes
+                        "), 'maxnotes.uid', '=', 'new_user.user_id')
+            ->leftJoin('notes', 'maxnotes.timestamp', '=', 'notes.timestamp')
+            ->take($take)
+            ->skip($skip)
+            ->orderBy('registration_date', 'desc')
+            ->get();
+        Flight::render('user_table.php', [ 'results' => $users, 'page' => $page+1 ], 'content');
+        Flight::render('template.php', [ 'pTitle' => "Registered users list (most recent first)" ]);
+    }
+);
+
 
 /*
  * Ajax functions to update welcomed and answered flags

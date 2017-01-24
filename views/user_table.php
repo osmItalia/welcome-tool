@@ -36,16 +36,30 @@
 </tbody>
 <tfoot>
 <?php
-$date = DateTime::createFromFormat('Ymd', $day);
-$previous = $date->sub(new DateInterval('P1D'))->format('Ymd');
-$next = $date->add(new DateInterval('P2D'))->format('Ymd');
+if (isset($day)) {
+    $date = DateTime::createFromFormat('Ymd', $day);
+    $previous = $date->sub(new DateInterval('P1D'))->format('Ymd');
+    $next = $date->add(new DateInterval('P2D'))->format('Ymd');
+
+    $prev_link = '/day/'.($previous);
+    $next_link = '/day/'.($next);
+} else {
+    $previous = $page-1;
+    $next = $page+1;
+    if ($previous < 1) {
+        $previous = 1;
+    }
+    $prev_link = '/list/'.($previous);
+    $next_link = '/list/'.($next);
+}
+
 ?>
 <tr><th colspan="7">
   <div class="ui right floated pagination menu">
-    <a class="icon item" href="<?php echo Flight::get('base').'/day/'.($previous)?>">
+    <a class="icon item" href="<?php echo Flight::get('base').$prev_link ?>">
       <i class="left chevron icon"></i>
     </a>
-    <a class="icon item" href="<?php echo Flight::get('base').'/day/'.($next)?>">
+    <a class="icon item" href="<?php echo Flight::get('base').$next_link ?>">
       <i class="right chevron icon"></i>
     </a>
   </div>
