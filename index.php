@@ -96,6 +96,7 @@ Flight::route(
             ->leftJoin('notes', 'maxnotes.timestamp', '=', 'notes.timestamp')
             ->where('registration_date', '>', strtotime('yesterday midnight'))
             ->where('registration_date', '<', strtotime('tomorrow midnight'))
+            ->orderBy('registration_date', 'desc')
             ->get();
 
         Flight::render('user_table.php', [ 'results' => $users, 'day' => date('Ymd')], 'content');
@@ -137,7 +138,7 @@ Flight::route(
             $page = 1;
         } // 0 shows first 15, but it is page = 1
         $page--;
-        $take = 10;
+        $take = 50;
         $skip = $take * $page;
 
         $users = Capsule::table('new_user')

@@ -29,7 +29,7 @@
         $answered = ($row->answered == 1) ? 'green checkmark' : 'red remove';
     ?>
     <td><i class="large <?php echo $answered;?> icon"></i></td>
-    <td><?php echo $row->note;?></td>
+    <td><?php echo (strlen($row->note) > 150)? substr($row->note, 0, 150)."..." : $row->note;?></td>
     <td><?php echo $row->first_changeset_editor;?></td>
 </tr>
 <?php endforeach; ?>
