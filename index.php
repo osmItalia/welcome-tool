@@ -3,6 +3,8 @@ require('vendor/autoload.php');
 
 $ini = parse_ini_file("variables.ini.php");
 Flight::set('ini', $ini);
+Flight::set('flight.base_url', '/');
+Flight::set('base', $ini['base_folder']);
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -36,7 +38,7 @@ Flight::route(
         $server = new sabas\OAuth1\Client\Server\Openstreetmap(array(
             'identifier' => $ini['identifier'],
             'secret' => $ini['secret'],
-            'callback_uri' => 'http://'.$_SERVER['HTTP_HOST'].Flight::request()->base.'/login',
+            'callback_uri' => 'http://'.$_SERVER['HTTP_HOST'].Flight::get('base').'/login',
         ));
 
         if (isset($_SESSION['token_credentials']) && !isset($_GET['oauth_token'])) {
@@ -49,6 +51,7 @@ Flight::route(
             $user = $server->getUserDetails($tokenCredentials);
             $_SESSION['display_name'] = (string) $user->user['display_name'];
             $_SESSION['user_id'] = (string) $user->user['id'];
+
             $_SESSION['user_picture'] = (string) $user->user->img['href'];
             Flight::redirect('/');
         } elseif (isset($_GET['oauth_token']) && isset($_GET['oauth_verifier'])) {
@@ -279,8 +282,8 @@ Flight::route(
             Flight::redirect('/');
         }
 
-        $content = '<ul><li><a href="<?php echo Flight::request()->base;?>/admin/languages">Languages</a></li>';
-        $content .= '<li><a href="<?php echo Flight::request()->base;?>/admin/snippets">Message snippets</a></li></ul>';
+        $content = "<ul><li><a href='<?php echo Flight::get('base');?>/admin/languages'>Languages</a></li>";
+        $content .= "<li><a href='<?php echo Flight::get('base');?>/admin/snippets'>Message snippets</a></li></ul>";
         Flight::render('template.php', [ 'pTitle' => "Admin", 'content' => $content ]);
     }
 );

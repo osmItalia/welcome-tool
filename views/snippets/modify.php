@@ -1,4 +1,4 @@
-<form action="<?php Flight::request()->base.Flight::request()->url?>" method="post" class="ui form">
+<form action="<?php Flight::get('base').Flight::request()->url?>" method="post" class="ui form">
     <div class="field">
       <label>Language</label>
       <select class="ui dropdown"  name="iso">

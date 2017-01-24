@@ -1,5 +1,5 @@
 <h2>Add a language</h2>
-<form action="<?php Flight::request()->base.Flight::request()->url?>" method="post" class="ui form">
+<form action="<?php echo Flight::get('base').'/admin/languages' ?>" method="post" class="ui form">
     <div class="field">
       <label>ISO Code</label>
       <input type="text" name="iso" placeholder="it">
@@ -18,7 +18,7 @@
 <tbody>
 <?php foreach ($languages as $langs) {
     echo "<tr><td>".$langs->iso."</td><td>".$langs->name."</td><td><a href='";
-    echo Flight::request()->base."/admin/languages/delete/".$langs->iso."'>Delete</a></td></tr>";
+    echo Flight::get('base')."/admin/languages/delete/".$langs->iso."'>Delete</a></td></tr>";
 }
 ?>
 </tbody>

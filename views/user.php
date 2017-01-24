@@ -66,7 +66,7 @@
         <div class="event">
           <div class="content">
             <div class="summary">
-                <a class="ui button" href="<?php echo Flight::request()->base.'/welcome/'.$user->user_id?>">Create a welcome message</a>
+                <a class="ui button" href="<?php echo Flight::get('base').'/welcome/'.$user->user_id?>">Create a welcome message</a>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="event">
           <div class="content">
             <div class="summary">
-               <a class="ui button" href="<?php echo Flight::request()->base.'/note/'.$user->user_id?>">Add a note</a>
+               <a class="ui button" href="<?php echo Flight::get('base').'/note/'.$user->user_id?>">Add a note</a>
             </div>
           </div>
         </div>
@@ -118,12 +118,12 @@
 <script>
 $('.checkbox.welcome').checkbox().checkbox({
     onChecked: function () {
-        $.post('<?php echo Flight::request()->base?>/user/<?php echo $user->user_id ?>/welcomed', {'isWelcomed': 1}, function(response) {
+        $.post('<?php echo Flight::get('base')?>/user/<?php echo $user->user_id ?>/welcomed', {'isWelcomed': 1}, function(response) {
             $('#welcomeLabel').html('Welcomed by <?php echo $_SESSION['display_name']?>');
         });
     },
     onUnchecked: function () {
-        $.post('<?php echo Flight::request()->base?>/user/<?php echo $user->user_id ?>/welcomed', {'isWelcomed': 0}, function(response) {
+        $.post('<?php echo Flight::get('base')?>/user/<?php echo $user->user_id ?>/welcomed', {'isWelcomed': 0}, function(response) {
             $('#welcomeLabel').html('Not welcomed');
         });
     }
@@ -131,12 +131,12 @@ $('.checkbox.welcome').checkbox().checkbox({
 
 $('.checkbox.answer').checkbox().checkbox({
     onChecked: function () {
-        $.post('<?php echo Flight::request()->base?>/user/<?php echo $user->user_id ?>/answered', {'hasAnswered': 1}, function(response) {
+        $.post('<?php echo Flight::get('base')?>/user/<?php echo $user->user_id ?>/answered', {'hasAnswered': 1}, function(response) {
             $('#answerLabel').html('Answered');
         });
     },
     onUnchecked: function () {
-        $.post('<?php echo Flight::request()->base?>/user/<?php echo $user->user_id ?>/answered', {'hasAnswered': 0}, function(response) {
+        $.post('<?php echo Flight::get('base')?>/user/<?php echo $user->user_id ?>/answered', {'hasAnswered': 0}, function(response) {
             $('#answerLabel').html('Not answered');
         });
     }

@@ -17,8 +17,8 @@
         <td><?php echo $row->user_id;?></td>
         <td><?php echo $row->username;?></td>
     <?php else :?>
-        <td><a href="<?php echo Flight::request()->base.'/user/'.$row->user_id ?>"><?php echo $row->user_id;?></a></td>
-        <td><a href="<?php echo Flight::request()->base.'/user/'.$row->user_id ?>"><?php echo $row->username;?></a></td>
+        <td><a href="<?php echo Flight::get('base').'/user/'.$row->user_id ?>"><?php echo $row->user_id;?></a></td>
+        <td><a href="<?php echo Flight::get('base').'/user/'.$row->user_id ?>"><?php echo $row->username;?></a></td>
     <?php endif;?>
     <?php
         $welcome = ($row->welcomed == 1) ? 'green checkmark' : 'red remove';
@@ -42,10 +42,10 @@ $next = $date->add(new DateInterval('P2D'))->format('Ymd');
 ?>
 <tr><th colspan="7">
   <div class="ui right floated pagination menu">
-    <a class="icon item" href="<?php echo Flight::request()->base.'/day/'.($previous)?>">
+    <a class="icon item" href="<?php echo Flight::get('base').'/day/'.($previous)?>">
       <i class="left chevron icon"></i>
     </a>
-    <a class="icon item" href="<?php echo Flight::request()->base.'/day/'.($next)?>">
+    <a class="icon item" href="<?php echo Flight::get('base').'/day/'.($next)?>">
       <i class="right chevron icon"></i>
     </a>
   </div>

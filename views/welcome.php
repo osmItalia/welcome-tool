@@ -15,7 +15,7 @@
 
 <div class="ui grid">
   <div class="eight wide column">
-      <form action="<?php Flight::request()->base.Flight::request()->url?>" method="post" class="ui form">
+      <form action="<?php echo Flight::get('base').Flight::request()->url?>" method="post" class="ui form">
         <div class="field">
           <label>Text (<a href="#" onclick="preview()">Preview</a>)</label>
           <textarea rows="12" id="message" name="message" ondragover="event.preventDefault()" ondrop="drop()"></textarea>
@@ -71,11 +71,11 @@ function appendSnippets(response) {
 $('.ui.dropdown')
   .dropdown({
       onChange: function (value) {
-          $.getJSON('<?php echo Flight::request()->base?>/snippets/'+value, { }, appendSnippets);
+          $.getJSON('<?php echo Flight::get('base')?>/snippets/'+value, { }, appendSnippets);
       }
   });
 
-$.getJSON('<?php echo Flight::request()->base?>/snippets/<?php echo $mLang;?>', { }, appendSnippets);
+$.getJSON('<?php echo Flight::get('base')?>/snippets/<?php echo $mLang;?>', { }, appendSnippets);
 
 function appendThis(obj) {
     var txt = $(obj).find('div.hidden_description')[0].innerHTML;

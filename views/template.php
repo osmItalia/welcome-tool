@@ -36,24 +36,24 @@ max-width: 1200px !important;
 <body class="Site">
     <div class="ui fixed inverted menu">
       <div class="ui container">
-        <a href="<?php echo Flight::request()->base;?>" class="header item">
-          <img class="logo" src="<?php echo Flight::request()->base;?>/welcome.png">&nbsp;
+        <a href="<?php echo Flight::get('base');?>/" class="header item">
+          <img class="logo" src="<?php echo Flight::get('base');?>/welcome.png">&nbsp;
           Welcome tool
         </a>
-        <a href="<?php echo Flight::request()->base;?>" class="item">Home</a>
+        <a href="<?php echo Flight::get('base');?>/" class="item">Home</a>
         <?php if (isset($_SESSION['display_name'])) :?>
         <div class="ui simple dropdown item" tabindex="0">
             Admin
             <i class="dropdown icon"></i>
             <div class="menu" tabindex="-1">
-              <a href="<?php echo Flight::request()->base;?>/admin/languages" class="item">Languages</a>
-              <a href="<?php echo Flight::request()->base;?>/admin/snippets" class="item">Message snippets</a>
+              <a href="<?php echo Flight::get('base');?>/admin/languages" class="item">Languages</a>
+              <a href="<?php echo Flight::get('base');?>/admin/snippets" class="item">Message snippets</a>
             </div>
         </div>
         <?php endif;?>
         <div class="right menu">
           <?php if (!isset($_SESSION['display_name'])) :?>
-          <a class="item" href="<?php echo Flight::request()->base;?>/login">Login</a>
+          <a class="item" href="<?php echo Flight::get('base');?>/login">Login</a>
           <?php else :?>
           <div class="item">
               <img class="avatar" src="<?php echo $_SESSION['user_picture']; ?>">&nbsp;

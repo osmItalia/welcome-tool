@@ -1,4 +1,4 @@
-<form method="post" action="<?php echo Flight::request()->base.Flight::request()->url?>">
+<form method="post" action="<?php echo Flight::get('base').Flight::request()->url?>">
 <div class="ui form">
   <div class="field">
     <label>Text</label>
