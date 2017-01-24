@@ -8,6 +8,7 @@
     <th>Answered?</th>
     <th>Last note</th>
     <th>First Editor</th>
+    <th>First edit near</th>
 </tr>
 </thead>
 <tbody>
@@ -31,6 +32,7 @@
     <td><i class="large <?php echo $answered;?> icon"></i></td>
     <td><?php echo $row->note;?></td>
     <td><?php echo $row->first_changeset_editor;?></td>
+    <td><?php echo $row->first_edit_location;?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>
@@ -40,7 +42,7 @@ $date = DateTime::createFromFormat('Ymd', $day);
 $previous = $date->sub(new DateInterval('P1D'))->format('Ymd');
 $next = $date->add(new DateInterval('P2D'))->format('Ymd');
 ?>
-<tr><th colspan="7">
+<tr><th colspan="8">
   <div class="ui right floated pagination menu">
     <a class="icon item" href="<?php echo Flight::request()->base.'/day/'.($previous)?>">
       <i class="left chevron icon"></i>
