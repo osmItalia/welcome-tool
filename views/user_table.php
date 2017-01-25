@@ -8,6 +8,7 @@
     <th>Answered?</th>
     <th>Last note</th>
     <th>First Editor</th>
+    <th>First edit near</th>
 </tr>
 </thead>
 <tbody>
@@ -31,6 +32,7 @@
     <td><i class="large <?php echo $answered;?> icon"></i></td>
     <td><?php echo (strlen($row->note) > 150)? substr($row->note, 0, 150)."..." : $row->note;?></td>
     <td><?php echo $row->first_changeset_editor;?></td>
+    <td><?php echo $row->first_edit_location;?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>
@@ -54,7 +56,7 @@ if (isset($day)) {
 }
 
 ?>
-<tr><th colspan="7">
+<tr><th colspan="8">
   <div class="ui right floated pagination menu">
     <a class="icon item" href="<?php echo Flight::get('base').$prev_link ?>">
       <i class="left chevron icon"></i>
