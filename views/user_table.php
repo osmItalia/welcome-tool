@@ -32,7 +32,7 @@
     <td><i class="large <?php echo $answered;?> icon"></i></td>
     <td><?php echo (strlen($row->note) > 150)? substr($row->note, 0, 150)."..." : $row->note;?></td>
     <td><?php echo $row->first_changeset_editor;?></td>
-    <td><?php echo $row->first_edit_location;?></td>
+    <td><?php echo preg_replace("/\s\([0-9.]* km\)\s*\(\w*\)$/", "", $row->first_edit_location);?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>
