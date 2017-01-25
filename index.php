@@ -3,7 +3,6 @@ require('vendor/autoload.php');
 
 $ini = parse_ini_file("variables.ini.php");
 Flight::set('ini', $ini);
-Flight::set('flight.base_url', '/');
 Flight::set('base', $ini['base_folder']);
 
 use Illuminate\Database\Capsule\Manager as Capsule;
