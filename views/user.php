@@ -62,6 +62,13 @@
         </div>
       </div>
     </div>
+    <div class="event">
+      <div class="content">
+        <div class="summary">
+           <a href="http://whosthat.osmz.ru/?id=<?php echo $user->user_id; ?>">Username changes</a>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </div>
