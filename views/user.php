@@ -51,6 +51,13 @@
     <div class="event">
       <div class="content">
         <div class="summary">
+           <a href="http://www.openstreetmap.org/user/<?php echo $user->username; ?>/history">OSM user history</a>
+        </div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="content">
+        <div class="summary">
            <a href="http://hdyc.neis-one.org/?<?php echo $user->username; ?>">HDYC</a>
         </div>
       </div>

@@ -29,7 +29,7 @@
           <label>Text (<a href="#" onclick="preview()">Preview</a>)</label>
           <textarea rows="12" id="message" name="message"
                     ondragover="event.preventDefault()"
-                    ondrop="$('#message').val($('#message').val()+event.dataTransfer.getData('text/plain')+'\n')"
+                    ondrop='$("#message").val($("#message").val()+event.dataTransfer.getData("text/plain")+"\n")'
                     ></textarea>
         </div>
         <button class="ui primary button" type="submit">
