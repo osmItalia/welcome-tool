@@ -48,10 +48,10 @@ Flight::route(
             $tokenCredentials = unserialize($_SESSION['token_credentials']);
 
             $user = $server->getUserDetails($tokenCredentials);
-            $_SESSION['display_name'] = (string) $user->user['display_name'];
-            $_SESSION['user_id'] = (string) $user->user['id'];
+            $_SESSION['display_name'] = (string) $user->nickname;
+            $_SESSION['user_id'] = (string) $user->uid;
+            $_SESSION['user_picture'] = (string) $user->imageUrl;
 
-            $_SESSION['user_picture'] = (string) $user->user->img['href'];
             Flight::redirect('/');
         } elseif (isset($_GET['oauth_token']) && isset($_GET['oauth_verifier'])) {
             $temporaryCredentials = unserialize($_SESSION['temporary_credentials']);
