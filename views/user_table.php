@@ -3,10 +3,10 @@
 <tr>
     <th>UserID</th>
     <th>Username</th>
-    <th>Welcomed?</th>
-    <th>Welcomed by</th>
-    <th>Answered?</th>
+    <th><div class="ui" data-tooltip="Has the user been welcomed? By whom?">Welcomed?</div></th>
+    <th><div class="ui" data-tooltip="Has the user answered?">Ans</div></th>
     <th>Last note</th>
+    <th>#CS</th>
     <th>First Editor</th>
     <th>First edit near</th>
 </tr>
@@ -24,13 +24,13 @@
     <?php
         $welcome = ($row->welcomed == 1) ? 'green checkmark' : 'red remove';
     ?>
-    <td><i class="large <?php echo $welcome;?> icon"></i></td>
-    <td><?php echo $row->welcomed_by;?></td>
+    <td><i class="large <?php echo $welcome;?> icon"></i>&nbsp;<?php echo $row->welcomed_by;?></td>
     <?php
         $answered = ($row->answered == 1) ? 'green checkmark' : 'red remove';
     ?>
     <td><i class="large <?php echo $answered;?> icon"></i></td>
     <td><?php echo (strlen($row->note) > 150)? substr($row->note, 0, 150)."..." : $row->note;?></td>
+    <td><?php echo ($row->total_changesets > 0)? $row->total_changesets: "";?></td>
     <td><?php echo $row->first_changeset_editor;?></td>
     <td><?php echo preg_replace("/\s\([0-9.]* km\)\s*\(\w*\)$/", "", $row->first_edit_location);?></td>
 </tr>
@@ -56,7 +56,7 @@ if (isset($day)) {
 }
 
 ?>
-<tr><th colspan="8">
+<tr><th colspan="9">
   <div class="ui right floated pagination menu">
     <a class="icon item" href="<?php echo Flight::get('base').$prev_link ?>">
       <i class="left chevron icon"></i>

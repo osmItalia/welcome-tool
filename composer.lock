@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f07b7ae3667f57da1f016ea2a0791614",
     "content-hash": "b9a4ac9ab493a525227313c390556a9d",
     "packages": [
         {
@@ -80,12 +79,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "dfadff37efcfd42230eef1350009898b7b9af40a"
+                "reference": "443ca656dec18f3e5ea7751d2429fc2aeacf3ca2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dfadff37efcfd42230eef1350009898b7b9af40a",
-                "reference": "dfadff37efcfd42230eef1350009898b7b9af40a",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/443ca656dec18f3e5ea7751d2429fc2aeacf3ca2",
+                "reference": "443ca656dec18f3e5ea7751d2429fc2aeacf3ca2",
                 "shasum": ""
             },
             "require": {
@@ -134,32 +133,32 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-12-15 09:53:31"
+            "time": "2017-01-16 17:41:59"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "2693c101803ca78b27972d84081d027fca790a1e"
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/2693c101803ca78b27972d84081d027fca790a1e",
-                "reference": "2693c101803ca78b27972d84081d027fca790a1e",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "^4.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -185,7 +184,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-11-18 17:47:58"
+            "time": "2016-12-20 10:07:11"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -258,22 +257,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "581e5259c08c94feefcefd908422e8ffec5097d8"
+                "reference": "d74e9d9182f5c2d84b86851a924d8e14ef675678"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/581e5259c08c94feefcefd908422e8ffec5097d8",
-                "reference": "581e5259c08c94feefcefd908422e8ffec5097d8",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/d74e9d9182f5c2d84b86851a924d8e14ef675678",
+                "reference": "d74e9d9182f5c2d84b86851a924d8e14ef675678",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "5.4.*",
-                "php": ">=5.6.4"
+                "illuminate/contracts": "5.5.*",
+                "php": ">=7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.4-dev"
+                    "dev-master": "5.5-dev"
                 }
             },
             "autoload": {
@@ -293,7 +292,7 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2016-12-14 16:12:17"
+            "time": "2017-01-04 19:49:01"
         },
         {
             "name": "illuminate/contracts",
@@ -301,21 +300,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "501659e0318ad684b95eff828d91b7fa2a035882"
+                "reference": "9b7b35b839a6bfb016dfe04ca2c291e53680a7d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/501659e0318ad684b95eff828d91b7fa2a035882",
-                "reference": "501659e0318ad684b95eff828d91b7fa2a035882",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/9b7b35b839a6bfb016dfe04ca2c291e53680a7d5",
+                "reference": "9b7b35b839a6bfb016dfe04ca2c291e53680a7d5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.4"
+                "php": ">=7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.4-dev"
+                    "dev-master": "5.5-dev"
                 }
             },
             "autoload": {
@@ -335,7 +334,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2016-12-12 17:41:08"
+            "time": "2017-01-20 14:17:30"
         },
         {
             "name": "illuminate/database",
@@ -343,33 +342,33 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "47570d5110b90782da788b774dc8853aa3af85ed"
+                "reference": "f720839f391eb4440f1609f93d68d46c2b54339f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/47570d5110b90782da788b774dc8853aa3af85ed",
-                "reference": "47570d5110b90782da788b774dc8853aa3af85ed",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/f720839f391eb4440f1609f93d68d46c2b54339f",
+                "reference": "f720839f391eb4440f1609f93d68d46c2b54339f",
                 "shasum": ""
             },
             "require": {
-                "illuminate/container": "5.4.*",
-                "illuminate/contracts": "5.4.*",
-                "illuminate/support": "5.4.*",
+                "illuminate/container": "5.5.*",
+                "illuminate/contracts": "5.5.*",
+                "illuminate/support": "5.5.*",
                 "nesbot/carbon": "~1.20",
-                "php": ">=5.6.4"
+                "php": ">=7.0"
             },
             "suggest": {
-                "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
+                "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.5).",
                 "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
-                "illuminate/console": "Required to use the database commands (5.4.*).",
-                "illuminate/events": "Required to use the observers with Eloquent (5.4.*).",
-                "illuminate/filesystem": "Required to use the migrations (5.4.*).",
-                "illuminate/pagination": "Required to paginate the result set (5.4.*)."
+                "illuminate/console": "Required to use the database commands (5.5.*).",
+                "illuminate/events": "Required to use the observers with Eloquent (5.5.*).",
+                "illuminate/filesystem": "Required to use the migrations (5.5.*).",
+                "illuminate/pagination": "Required to paginate the result set (5.5.*)."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.4-dev"
+                    "dev-master": "5.5-dev"
                 }
             },
             "autoload": {
@@ -395,7 +394,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2016-12-15 15:02:20"
+            "time": "2017-01-20 14:17:30"
         },
         {
             "name": "illuminate/support",
@@ -403,20 +402,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "6b32792b4686e86968872d0f909ac91d90bf4dac"
+                "reference": "e25a84d6e24527a1142458f297ee55ae7d7ee683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/6b32792b4686e86968872d0f909ac91d90bf4dac",
-                "reference": "6b32792b4686e86968872d0f909ac91d90bf4dac",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/e25a84d6e24527a1142458f297ee55ae7d7ee683",
+                "reference": "e25a84d6e24527a1142458f297ee55ae7d7ee683",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "~1.0",
                 "ext-mbstring": "*",
-                "illuminate/contracts": "5.4.*",
-                "paragonie/random_compat": "~1.4|~2.0",
-                "php": ">=5.6.4"
+                "illuminate/contracts": "5.5.*",
+                "php": ">=7.0"
             },
             "replace": {
                 "tightenco/collect": "self.version"
@@ -429,7 +427,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.4-dev"
+                    "dev-master": "5.5-dev"
                 }
             },
             "autoload": {
@@ -452,7 +450,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2016-12-15 18:03:58"
+            "time": "2017-01-20 14:17:30"
         },
         {
             "name": "league/oauth1-client",
@@ -515,7 +513,7 @@
                 "tumblr",
                 "twitter"
             ],
-            "time": "2016-08-17 00:36:58"
+            "time": "2016-08-17T00:36:58+00:00"
         },
         {
             "name": "mikecao/flight",
@@ -558,7 +556,7 @@
             ],
             "description": "Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications.",
             "homepage": "http://flightphp.com",
-            "time": "2016-10-25 19:27:20"
+            "time": "2016-10-25T19:27:20+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -566,27 +564,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "0f87ca78d68298615068b08ce6c1b72c6ed86a49"
+                "reference": "5eab092a2fd50319d7f7ff2d4b235083cdb883d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/0f87ca78d68298615068b08ce6c1b72c6ed86a49",
-                "reference": "0f87ca78d68298615068b08ce6c1b72c6ed86a49",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5eab092a2fd50319d7f7ff2d4b235083cdb883d9",
+                "reference": "5eab092a2fd50319d7f7ff2d4b235083cdb883d9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "symfony/translation": "~2.6|~3.0"
+                "symfony/translation": "~2.6 || ~3.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~1.11",
-                "phpunit/phpunit": "~4.0|~5.0",
-                "sllh/php-cs-fixer-styleci-bridge": "^2.1"
+                "friendsofphp/php-cs-fixer": "~2",
+                "phpunit/phpunit": "~4.0 || ~5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.22-dev"
+                    "dev-master": "1.23-dev"
                 }
             },
             "autoload": {
@@ -612,55 +609,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2016-12-02 15:58:32"
-        },
-        {
-            "name": "paragonie/random_compat",
-            "version": "v2.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
-                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
-            },
-            "suggest": {
-                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/random.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com"
-                }
-            ],
-            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-            "keywords": [
-                "csprng",
-                "pseudorandom",
-                "random"
-            ],
-            "time": "2016-11-07 23:38:38"
+            "time": "2017-01-16 21:55:13"
         },
         {
             "name": "psr/http-message",
@@ -769,12 +718,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabas/oauth1-openstreetmap.git",
-                "reference": "86dff6174beccb489d38c79bc49fcc30aa84c546"
+                "reference": "9b3aa5be92d9d7841dfe5c611ff1fd68a0b74274"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabas/oauth1-openstreetmap/zipball/86dff6174beccb489d38c79bc49fcc30aa84c546",
-                "reference": "86dff6174beccb489d38c79bc49fcc30aa84c546",
+                "url": "https://api.github.com/repos/sabas/oauth1-openstreetmap/zipball/9b3aa5be92d9d7841dfe5c611ff1fd68a0b74274",
+                "reference": "9b3aa5be92d9d7841dfe5c611ff1fd68a0b74274",
                 "shasum": ""
             },
             "require": {
@@ -798,7 +747,7 @@
                 "oauth",
                 "oauth1"
             ],
-            "time": "2016-12-12 20:59:49"
+            "time": "2016-12-12 21:37:55"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -865,12 +814,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "b2f5479424848393a3c04389a765259e7a2bfef6"
+                "reference": "5d598faac341f9ac753f327ec62903671d3da8d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/b2f5479424848393a3c04389a765259e7a2bfef6",
-                "reference": "b2f5479424848393a3c04389a765259e7a2bfef6",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/5d598faac341f9ac753f327ec62903671d3da8d3",
+                "reference": "5d598faac341f9ac753f327ec62903671d3da8d3",
                 "shasum": ""
             },
             "require": {
@@ -921,7 +870,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-08 15:31:48"
+            "time": "2017-01-21 17:10:26"
         }
     ],
     "packages-dev": [],

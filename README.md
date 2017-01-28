@@ -9,7 +9,7 @@ To install:
 * Register a new Oauth client in your OpenStreetMap user profile.
 * Copy ```variables.sample.ini.php``` to ```variables.ini.php``` and modify this with your variables (database credentials, Oauth, base url, feed url and main language).
 
-To download new users, run ```cron_new_user.php``` either in the browser, or via command line (you could set it up as a cronjob running daily).
+To download new users, run ```cron_new_user.php``` either in the browser, or via command line (you could set it up as a cronjob running daily). To update changeset information, run similarly ```cron_update_cs.php``` (not at the same time).
 
 ## Usage ##
 From the admin section set up as many languages as you want with their ISO-alpha-2 code (at least one language, which needs to be registered in the ```mainLanguage``` parameter in the variables file). Now you can create "snippets" per each language (a title and a markdown text), which you will use to compose new messages.

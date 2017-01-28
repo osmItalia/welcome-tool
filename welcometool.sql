@@ -86,7 +86,9 @@ CREATE TABLE `welcome_user` (
   `welcomed` tinyint(4) NOT NULL,
   `welcomed_by` varchar(50) NOT NULL,
   `welcomed_on` bigint(20) NOT NULL,
-  `answered` tinyint(4) NOT NULL
+  `answered` tinyint(4) NOT NULL,
+  `total_changesets` int(11) NULL,
+  `last_check` bigint(20) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
