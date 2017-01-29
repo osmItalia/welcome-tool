@@ -42,8 +42,8 @@ max-width: 1200px !important;
         </a>
         <a href="<?php echo Flight::get('base');?>/" class="item">Home</a>
         <a href="<?php echo Flight::get('base');?>/list" class="item">List mode</a>
-        <a href="<?php echo Flight::get('base');?>/welcomedByMe" class="item">Welcomed by me</a>
         <?php if (isset($_SESSION['display_name'])) :?>
+        <a href="<?php echo Flight::get('base');?>/welcomedByMe" class="item">Welcomed by me</a>
         <div class="ui simple dropdown item" tabindex="0">
             Admin
             <i class="dropdown icon"></i>
