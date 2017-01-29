@@ -51,8 +51,13 @@ if (isset($day)) {
     if ($previous < 1) {
         $previous = 1;
     }
-    $prev_link = '/list/'.($previous);
-    $next_link = '/list/'.($next);
+    if ($function == 'byMe') {
+        $bUrl = '/welcomedByMe/';
+    } else {
+        $bUrl = '/list/';
+    }
+    $prev_link = $bUrl.($previous);
+    $next_link = $bUrl.($next);
 }
 
 ?>

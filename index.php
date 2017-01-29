@@ -150,8 +150,35 @@ Flight::route(
             ->skip($skip)
             ->orderBy('registration_date', 'desc')
             ->get();
-        Flight::render('user_table.php', [ 'results' => $users, 'page' => $page+1 ], 'content');
+        Flight::render('user_table.php', [ 'results' => $users, 'function' => 'list', 'page' => $page+1 ], 'content');
         Flight::render('template.php', [ 'pTitle' => "Registered users list (most recent first)" ]);
+    }
+);
+
+Flight::route(
+    '/welcomedByMe(/@page)',
+    function ($page) {
+        /* pagination */
+        if ($page === null || $page < 1) {
+            $page = 1;
+        } // 0 shows first 15, but it is page = 1
+        $page--;
+        $take = 50;
+        $skip = $take * $page;
+
+        $users = Capsule::table('new_user')
+            ->leftJoin('welcome_user', 'new_user.user_id', '=', 'welcome_user.uid')
+            ->leftJoin(Capsule::raw("
+                            (SELECT uid, MAX(timestamp) AS timestamp FROM notes GROUP BY uid) maxnotes
+                        "), 'maxnotes.uid', '=', 'new_user.user_id')
+            ->leftJoin('notes', 'maxnotes.timestamp', '=', 'notes.timestamp')
+            ->take($take)
+            ->skip($skip)
+            ->where('welcomed_by', $_SESSION['display_name'])
+            ->orderBy('registration_date', 'desc')
+            ->get();
+        Flight::render('user_table.php', [ 'results' => $users, 'function' => 'byMe', 'page' => $page+1 ], 'content');
+        Flight::render('template.php', [ 'pTitle' => "Registered users welcomed by me (most recent first)" ]);
     }
 );
 
