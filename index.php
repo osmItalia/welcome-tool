@@ -27,6 +27,14 @@ $capsule->bootEloquent();
 
 session_start();
 
+include('lang.php');
+Flight::route('*', function () {
+    if (isset(Flight::request()->query['lang'])) {
+        setLang(substr(Flight::request()->query['lang'], 0, 2));
+    }
+    return true;
+});
+
 /*
  * This route handles authentication via oauth
  */
@@ -99,7 +107,7 @@ Flight::route(
             ->get();
 
         Flight::render('user_table.php', [ 'results' => $users, 'day' => date('Ymd')], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Users who registered during the past day" ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_REGISTERED_PAST_DAY') ]);
     }
 );
 
@@ -125,7 +133,7 @@ Flight::route(
             ->where('registration_date', '<', $end)
             ->get();
         Flight::render('user_table.php', [ 'results' => $users, 'day' => $day ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Users who registered on ".$day ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_REGISTERED_ON_DAY')." ".$day ]);
     }
 );
 
@@ -151,7 +159,7 @@ Flight::route(
             ->orderBy('registration_date', 'desc')
             ->get();
         Flight::render('user_table.php', [ 'results' => $users, 'function' => 'list', 'page' => $page+1 ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Registered users list (most recent first)" ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_REGISTERED_USERS_LIST') ]);
     }
 );
 
@@ -178,7 +186,7 @@ Flight::route(
             ->orderBy('registration_date', 'desc')
             ->get();
         Flight::render('user_table.php', [ 'results' => $users, 'function' => 'byMe', 'page' => $page+1 ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Registered users welcomed by me (most recent first)" ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_REGISTERED_USERS_LIST_WELCOMED_BY_ME') ]);
     }
 );
 
@@ -238,7 +246,7 @@ Flight::route(
             ->orderBy('timestamp', 'desc')
             ->get();
         Flight::render('user.php', [ 'user' => $user, 'notes' => $notes ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "User ".$id ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_USER')." ".$id ]);
     }
 );
 
@@ -252,7 +260,7 @@ Flight::route(
             Flight::redirect('/');
         }
         Flight::render('note.php', [ 'id' => $id ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Add a note on user ".$id ]);
+        Flight::render('template.php', [ 'pTitle' =>  __('TITLE_ADD_NOTE')." ".$id ]);
     }
 );
 
@@ -301,7 +309,7 @@ Flight::route(
             ->get();
 
         Flight::render('welcome.php', [ 'id' => $id, 'languages' => $lang ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Create welcome message for user ".$id ]);
+        Flight::render('template.php', [ 'pTitle' =>  __('TITLE_CREATE_MESSAGE')." ".$id ]);
     }
 );
 
@@ -338,7 +346,7 @@ Flight::route(
 
         $content = "<ul><li><a href='<?php echo Flight::get('base');?>/admin/languages'>Languages</a></li>";
         $content .= "<li><a href='<?php echo Flight::get('base');?>/admin/snippets'>Message snippets</a></li></ul>";
-        Flight::render('template.php', [ 'pTitle' => "Admin", 'content' => $content ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_ADMIN'), 'content' => $content ]);
     }
 );
 
@@ -353,7 +361,7 @@ Flight::route(
             ->get();
 
         Flight::render('languages.php', [ 'languages' => $lang ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Languages admin" ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_LANGUAGES_ADMIN') ]);
     }
 );
 
@@ -397,7 +405,7 @@ Flight::route(
             ->get();
 
         Flight::render('snippets.php', [ 'snippets' => $snip ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_SNIPPETS_ADMIN') ]);
     }
 );
 
@@ -414,7 +422,7 @@ Flight::route(
             ->get();
 
         Flight::render('snippets/insert.php', [ 'languages' => $lang  ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_SNIPPETS_ADMIN') ]);
     }
 );
 
@@ -461,7 +469,7 @@ Flight::route(
             ->get();
 
         Flight::render('snippets/modify.php', [ 'snippets' => $snip, 'languages' => $lang  ], 'content');
-        Flight::render('template.php', [ 'pTitle' => "Snippets admin" ]);
+        Flight::render('template.php', [ 'pTitle' => __('TITLE_SNIPPETS_ADMIN') ]);
     }
 );
 

@@ -17,29 +17,26 @@
 }
 </style>
 <div class="ui grid">
-    <p class="italic">Choose the snippet language you need.
-        Drag the snippet from the right menu and drop it onto the text area on the left (you can also double-click them).
-        Click on "Preview" to get a rendered markdown preview.
-    </p>
+    <p class="italic"><?php echo __('WELCOME_INSTRUCTIONS');?></p>
 </div>
 <div class="ui grid">
   <div class="eight wide column">
       <form action="<?php echo Flight::get('base').Flight::request()->url?>" method="post" class="ui form">
         <div class="field">
-          <label>Text (<a href="#" onclick="preview()">Preview</a>)</label>
+          <label><?php echo __('WELCOME_LABEL_TEXT');?> (<a href="#" onclick="preview()"><?php echo __('WELCOME_LABEL_PREVIEW');?></a>)</label>
           <textarea rows="12" id="message" name="message"
                     ondragover="event.preventDefault()"
                     ondrop='$("#message").val($("#message").val()+event.dataTransfer.getData("text/plain")+"\n")'
                     ></textarea>
         </div>
         <button class="ui primary button" type="submit">
-          I sent this message
+          <?php echo __('WELCOME_BUTTON_SENT');?>
       </button>
       </form>
       <div class="ui modal">
         <i class="close icon"></i>
         <div class="header">
-          Message preview
+          <?php echo __('WELCOME_TITLE_PREVIEW');?>
         </div>
         <div class="content" id="modalPreview">
         </div>

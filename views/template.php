@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Welcome tool</title>
+  <title><?php echo __('SITE_TITLE')?></title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.css">
   <script src=" https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -13,24 +13,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.5.5/showdown.min.js"></script>
 
   <style>
-  .Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+    .Site {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
 
-.Site-content {
-  flex: 1;
-  margin-top: 75px;
-}
+    .Site-content {
+      flex: 1;
+      margin-top: 75px;
+    }
 
-.logo, .avatar {
+    .logo, .avatar {
 
-}
+    }
 
-.ui.main.text.container.Site-content {
-max-width: 1200px !important;
-}
+    .ui.main.text.container.Site-content {
+      max-width: 1200px !important;
+    }
   </style>
 </head>
 <body class="Site">
@@ -38,24 +38,24 @@ max-width: 1200px !important;
       <div class="ui container">
         <a href="<?php echo Flight::get('base');?>/" class="header item">
           <img class="logo" src="<?php echo Flight::get('base');?>/welcome.png">&nbsp;
-          Welcome tool
+          <?php echo __('SITE_TITLE')?>
         </a>
-        <a href="<?php echo Flight::get('base');?>/" class="item">Home</a>
-        <a href="<?php echo Flight::get('base');?>/list" class="item">List mode</a>
+        <a href="<?php echo Flight::get('base');?>/" class="item"><?php echo __('MENU_HOME')?></a>
+        <a href="<?php echo Flight::get('base');?>/list" class="item"><?php echo __('MENU_LIST')?></a>
         <?php if (isset($_SESSION['display_name'])) :?>
-        <a href="<?php echo Flight::get('base');?>/welcomedByMe" class="item">Welcomed by me</a>
+        <a href="<?php echo Flight::get('base');?>/welcomedByMe" class="item"><?php echo __('MENU_WELCOMED_BY_ME')?></a>
         <div class="ui simple dropdown item" tabindex="0">
-            Admin
+            <?php echo __('MENU_ADMIN')?>
             <i class="dropdown icon"></i>
             <div class="menu" tabindex="-1">
-              <a href="<?php echo Flight::get('base');?>/admin/languages" class="item">Languages</a>
-              <a href="<?php echo Flight::get('base');?>/admin/snippets" class="item">Message snippets</a>
+              <a href="<?php echo Flight::get('base');?>/admin/languages" class="item"><?php echo __('MENU_LANGUAGES')?></a>
+              <a href="<?php echo Flight::get('base');?>/admin/snippets" class="item"><?php echo __('MENU_SNIPPETS')?></a>
             </div>
         </div>
         <?php endif;?>
         <div class="right menu">
           <?php if (!isset($_SESSION['display_name'])) :?>
-          <a class="item" href="<?php echo Flight::get('base');?>/login">Login</a>
+          <a class="item" href="<?php echo Flight::get('base');?>/login"><?php echo __('MENU_LOGIN')?></a>
           <?php else :?>
           <div class="item">
               <img class="avatar" src="<?php echo $_SESSION['user_picture']; ?>">&nbsp;
