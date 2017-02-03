@@ -3,7 +3,7 @@ function userLanguage($baseUrl, $lang)
 {
     $file = $_SERVER['DOCUMENT_ROOT'].$baseUrl.'/locales/'. $lang . '.json';
     if (!file_exists($file)) {
-        $file = $_SERVER['DOCUMENT_ROOT'].$baseUrl. '/locales/en.json';
+        $file = $_SERVER['DOCUMENT_ROOT'].$baseUrl. '/locales/'.Flight::get('ini')['mainLanguage'].'.json';
     }
     return json_decode(file_get_contents($file), true);
 }
@@ -32,7 +32,7 @@ function setLang($lang)
 function getLang()
 {
     if (!isset($_COOKIE["extractLang"])) {
-        setLang('en');
+        setLang(Flight::get('ini')['mainLanguage']);
     }
     if (Flight::has('lang')) {
         return Flight::get('lang');

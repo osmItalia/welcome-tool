@@ -1,6 +1,6 @@
 <form action="<?php Flight::get('base').Flight::request()->url?>" method="post" class="ui form">
     <div class="field">
-      <label>Language</label>
+      <label><?php echo __('ADMIN_LANGUAGE');?></label>
       <select class="ui dropdown"  name="iso">
         <?php
         $mLang = $snippets->language;
@@ -10,19 +10,19 @@
       </select>
     </div>
     <div class="field">
-      <label>Part</label>
+      <label><?php echo __('ADMIN_PART');?></label>
       <input type="text" name="part" value="<?php echo $snippets->part;?>">
     </div>
     <div class="field">
-      <label>Text (<a href="#" onclick="preview()">Preview</a>)</label>
+      <label><?php echo __('WELCOME_LABEL_TEXT');?> (<a href="#" onclick="preview()"><?php echo __('WELCOME_LABEL_PREVIEW');?></a>)</label>
       <textarea id="text" name="text"><?php echo $snippets->text;?></textarea>
     </div>
-    <button class="ui button" type="submit">Modify</button>
+    <button class="ui button" type="submit"><?php echo __('ADMIN_LINK_MODIFY');?></button>
 </form>
 <div class="ui modal">
   <i class="close icon"></i>
   <div class="header">
-    Snippet preview
+    <?php echo __('ADMIN_SNIPPET_PREVIEW');?>
   </div>
   <div class="content" id="modalPreview">
   </div>

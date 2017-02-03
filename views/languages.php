@@ -18,7 +18,7 @@
 <tbody>
 <?php foreach ($languages as $langs) {
     echo "<tr><td>".$langs->iso."</td><td>".$langs->name."</td><td><a href='";
-    echo Flight::get('base')."/admin/languages/delete/".$langs->iso."'>Delete</a></td></tr>";
+    echo Flight::get('base')."/admin/languages/delete/".$langs->iso."'>".__('ADMIN_LINK_DELETE')."</a></td></tr>";
 }
 ?>
 </tbody>

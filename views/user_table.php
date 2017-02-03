@@ -1,14 +1,14 @@
 <table class="ui celled table selectable">
 <thead>
 <tr>
-    <th>UserID</th>
-    <th>Username</th>
-    <th><div class="ui" data-tooltip="Has the user been welcomed? By whom?">Welcomed?</div></th>
-    <th><div class="ui" data-tooltip="Has the user answered?">Ans</div></th>
-    <th>Last note</th>
-    <th>#CS</th>
-    <th>First Editor</th>
-    <th>First edit near</th>
+    <th><?php echo __('USER_ID')?></th>
+    <th><?php echo __('USER_USERNAME')?></th>
+    <th><div class="ui" data-tooltip="<?php echo __('USER_WELCOMED_TOOLTIP')?>"><?php echo __('USER_WELCOMED')?></div></th>
+    <th><div class="ui" data-tooltip="<?php echo __('USER_ANSWERED_TOOLTIP')?>"><?php echo __('USER_ANSWERED_SHORT')?></div></th>
+    <th><?php echo __('USER_LAST_NOTE')?></th>
+    <th><?php echo __('USER_CHANGESETS_SHORT')?></th>
+    <th><?php echo __('USER_FIRST_EDITOR')?></th>
+    <th><?php echo __('USER_FIRST_EDIT_LOCATION')?></th>
 </tr>
 </thead>
 <tbody>
