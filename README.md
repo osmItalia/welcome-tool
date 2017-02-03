@@ -2,6 +2,8 @@ Tool to manage new OpenStreetMap users monitoring in a country.
 
 Inspired by [OSM Welcome Belgium](https://github.com/osmbe/osm-welcome-belgium), uses the [newestosm feed](http://resultmaps.neis-one.org/newestosm.php) by Pascal Neis.
 
+Used in production for Italy on [http://welcome.openstreetmap.it/](http://welcome.openstreetmap.it/).
+
 ## Installation ##
 To install:
 * Have a working AMP web server (Apache with mod-rewrite, PHP, MySQL)
