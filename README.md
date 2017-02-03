@@ -15,3 +15,6 @@ To download new users, run ```cron_new_user.php``` either in the browser, or via
 
 ## Usage ##
 From the admin section set up as many languages as you want with their ISO-alpha-2 code (at least one language, which needs to be registered in the ```mainLanguage``` parameter in the variables file). Now you can create "snippets" per each language (a title and a markdown text), which you will use to compose new messages.
+
+## Language ##
+Language information is loaded from json files in ```locales``` folder. Default language is configured in the variables file.
